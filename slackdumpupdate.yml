@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    state_value: "{{ state }}"
+  tasks:
+  - slack:
+      token: slacktoken
+      msg: "{{ success_message }}"
+      channel: "slackchannel"
+      icon_emoji: "bangbang"
+    when: state_value == "success"
+
+- name: Unsuccessfuls
+  hosts: localhost
+  vars:
+    state_value: "{{ state }}"
+  tasks:
+  - slack:
+      token: slacktoken
+      msg: "{{ message }}"
+      channel: "slackchannel"
+      icon_emoji: "bangbang"
+    when: state_value == "failure"

@@ -1,0 +1,29 @@
+---
+- name: Successful
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  vars:
+    state_value: "{{ state }}"
+  tasks:
+  - name: Successful slack notification
+    slack:
+      token: slacktoken
+      msg: "{{ success_message }}"
+      channel: "slackchannel"
+      icon_emoji: "bangbang"
+    when: state_value == "success"
+
+- name: Unsuccessful
+  hosts: localhost
+  gather_facts: false
+  vars:
+    state_value: "{{ state }}"
+  tasks:
+  - name: Unsuccessful slack notification
+    slack:
+      token: slacktoken
+      msg: "{{ message }}"
+      channel: "slackchannel"
+      icon_emoji: "bangbang"
+    when: state_value == "failure"

@@ -3,4 +3,4 @@ This script takes dumps of the database in parts (ie the database is broken down
 
 Tools Required: python3, ansible
 Python Packages Required: numpy, 
-File Require: A file which contains the list of tables 
+File Required: A file which contains the list of tables 
